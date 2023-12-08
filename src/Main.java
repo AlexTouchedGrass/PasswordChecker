@@ -8,8 +8,8 @@ public class Main {
 
         do {
             System.out.println("Please enter a password you would like to have checked.");
-            boolean need12Length = get12LengthString();
-            if (need12Length = true) {
+            boolean need12Length = get12LengthString(scan);
+            if (need12Length) {
                 score++;
             }
 
@@ -43,8 +43,20 @@ public class Main {
                 System.out.println("Poor Score!");
             } else {
                 System.out.println("Your score is " + score + ".");
-                System.out.println("Try again!");
+                System.out.println("You Failed!");
             }
+
+            boolean doneYN = false;
+            do {
+                boolean YN = getYNConfirm(scan,"Would you like to play again? (Y/N)");
+
+                if (!YN) {
+                    doneYN = true;
+                } else {
+                    done = true;
+                    doneYN = true;
+                }
+            } while (!doneYN); //I know this is seen as unnecessary but I feel safer with it and I don't think it impacts the code.
         } while (!done);
     }
 
@@ -66,6 +78,29 @@ public class Main {
             // in.nextLine(); // could be use for buffer
         }while(!done);
         return done;
+    }
+
+    public static boolean getYNConfirm(Scanner in, String prompt){
+        boolean done = false;
+        String input;
+        boolean YN = false;
+
+        System.out.println(prompt);
+        do{
+            input = in.nextLine();
+            if(input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y")){
+                System.out.println("You will continue.");
+                input = "YES";
+                done = true;
+                YN = true;
+            } else if (input.equalsIgnoreCase("no") || input.equalsIgnoreCase("n")) {
+                System.out.println("You will not continue.");
+                input = "NO";
+                done = true;
+            }
+            //in.nextLine(); //not needed rn.
+        }while(!done);
+        return YN;
     }
 }
 
