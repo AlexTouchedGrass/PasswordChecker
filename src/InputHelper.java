@@ -180,9 +180,10 @@ public class InputHelper {
     }
 
     //YNCONFIRM is self explanatory
-    public static String getYNConfirm(Scanner in, String prompt){
+    public static boolean getYNConfirm(Scanner in, String prompt){
         boolean done = false;
         String input;
+        boolean YN = false;
 
         System.out.println(prompt);
         do{
@@ -191,6 +192,7 @@ public class InputHelper {
                 System.out.println("You will continue.");
                 input = "YES";
                 done = true;
+                YN = true;
             } else if (input.equalsIgnoreCase("no") || input.equalsIgnoreCase("n")) {
                 System.out.println("You will not continue.");
                 input = "NO";
@@ -198,7 +200,7 @@ public class InputHelper {
             }
             //in.nextLine(); //not needed rn.
         }while(!done);
-        return input;
+        return YN;
     }
 
     //Makes a 'purty header.
