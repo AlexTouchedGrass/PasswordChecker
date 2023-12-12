@@ -10,23 +10,25 @@ public class Main {
             int score = 0;
             System.out.println("Please enter a password you would like to have checked.");
 
-            if (get12LengthString(scan)) {
+            String password = scan.nextLine();  // Store the entered password
+
+            if (get12LengthString(password)) {
                 score++;
             }
 
-            if (containsUppercase(scan)) {
+            if (containsUppercase(password)) {
                 score++;
             }
 
-            if (containsLowercase(scan)) {
+            if (containsLowercase(password)) {
                 score++;
             }
 
-            if (containsNumber(scan)) {
+            if (containsNumber(password)) {
                 score++;
             }
 
-            if (containsSpecialCharacter(scan)) {
+            if (containsSpecialCharacter(password)) {
                 score++;
             }
 
@@ -56,74 +58,24 @@ public class Main {
     }
 
     // FUNCTIONS
-    public static boolean get12LengthString(Scanner in) {
-        boolean done = false;
-        String input;
-
-        System.out.println();
-        do {
-            input = in.nextLine();
-            if (input.length() >= 12) {
-                done = true;
-            }
-        } while (!done);
-        return done;
+    public static boolean get12LengthString(String password) {
+        return password.length() >= 12;
     }
 
-    public static boolean containsUppercase(Scanner in) {
-        boolean done = false;
-        String input;
-
-        System.out.println("Checking for at least one uppercase letter.");
-        do {
-            input = in.nextLine();
-            if (input.matches(".*[A-Z].*")) {
-                done = true;
-            }
-        } while (!done);
-        return done;
+    public static boolean containsUppercase(String password) {
+        return password.matches(".*[A-Z].*");
     }
 
-    public static boolean containsLowercase(Scanner in) {
-        boolean done = false;
-        String input;
-
-        System.out.println("Checking for at least one lowercase letter.");
-        do {
-            input = in.nextLine();
-            if (input.matches(".*[a-z].*")) {
-                done = true;
-            }
-        } while (!done);
-        return done;
+    public static boolean containsLowercase(String password) {
+        return password.matches(".*[a-z].*");
     }
 
-    public static boolean containsNumber(Scanner in) {
-        boolean done = false;
-        String input;
-
-        System.out.println("Checking for at least one number [0-9].");
-        do {
-            input = in.nextLine();
-            if (input.matches(".*[0-9].*")) {
-                done = true;
-            }
-        } while (!done);
-        return done;
+    public static boolean containsNumber(String password) {
+        return password.matches(".*[0-9].*");
     }
 
-    public static boolean containsSpecialCharacter(Scanner in) {
-        boolean done = false;
-        String input;
-
-        System.out.println("Checking for at least one special character [!#$%].");
-        do {
-            input = in.nextLine();
-            if (input.matches(".*[!#$%].*")) {
-                done = true;
-            }
-        } while (!done);
-        return done;
+    public static boolean containsSpecialCharacter(String password) {
+        return password.matches(".*[!#$%].*");
     }
 
     public static boolean getYNConfirm(Scanner in, String prompt) {
