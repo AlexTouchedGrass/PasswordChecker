@@ -65,4 +65,86 @@ public class Main {
             input = in.nextLine();
             if (input.length() >= 12) {
                 done = true;
-     
+            }
+        } while (!done);
+        return done;
+    }
+
+    public static boolean containsUppercase(Scanner in) {
+        boolean done = false;
+        String input;
+
+        System.out.println("Checking for at least one uppercase letter.");
+        do {
+            input = in.nextLine();
+            if (input.matches(".*[A-Z].*")) {
+                done = true;
+            }
+        } while (!done);
+        return done;
+    }
+
+    public static boolean containsLowercase(Scanner in) {
+        boolean done = false;
+        String input;
+
+        System.out.println("Checking for at least one lowercase letter.");
+        do {
+            input = in.nextLine();
+            if (input.matches(".*[a-z].*")) {
+                done = true;
+            }
+        } while (!done);
+        return done;
+    }
+
+    public static boolean containsNumber(Scanner in) {
+        boolean done = false;
+        String input;
+
+        System.out.println("Checking for at least one number [0-9].");
+        do {
+            input = in.nextLine();
+            if (input.matches(".*[0-9].*")) {
+                done = true;
+            }
+        } while (!done);
+        return done;
+    }
+
+    public static boolean containsSpecialCharacter(Scanner in) {
+        boolean done = false;
+        String input;
+
+        System.out.println("Checking for at least one special character [!#$%].");
+        do {
+            input = in.nextLine();
+            if (input.matches(".*[!#$%].*")) {
+                done = true;
+            }
+        } while (!done);
+        return done;
+    }
+
+    public static boolean getYNConfirm(Scanner in, String prompt) {
+        boolean done = false;
+        String input;
+        boolean YN = false;
+
+        System.out.println(prompt);
+        do {
+            input = in.nextLine();
+            if (input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y")) {
+                System.out.println("You will continue.");
+                input = "YES";
+                done = true;
+                YN = true;
+            } else if (input.equalsIgnoreCase("no") || input.equalsIgnoreCase("n")) {
+                System.out.println("You will not continue.");
+                input = "NO";
+                done = true;
+            }
+        } while (!done);
+        return YN;
+    }
+}
